@@ -38,9 +38,11 @@ CREATE TABLE Item (
 CREATE TABLE OrdersItems (
     OrdersID INT NOT NULL,
     ItemID INT NOT NULL, 
+    itemName VARCHAR(20) NOT NULL,
     ItemQty INT NOT NULL,
     PRIMARY KEY (OrdersID,ItemID),
     FOREIGN KEY (OrdersID) REFERENCES Orders (OrdersID),
+    FOREIGN KEY (itemName) REFERENCES Item (itemName),
     FOREIGN KEY (ItemID) REFERENCES Item (ItemID)
 );
 

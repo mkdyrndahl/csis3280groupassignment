@@ -14,7 +14,8 @@ class OrdersItems {
     private $OrdersID;
     private $ItemID;
     private $ItemQty;
-    
+    private $itemName;
+
     // Getters
     function getOrdersID() : int {
         return $this->OrdersID;
@@ -26,6 +27,10 @@ class OrdersItems {
 
     function getItemQty() : int {
         return $this->ItemQty;
+    }
+
+    function getItemName() : string {
+        return $this->itemName;
     }
     // Setters
     function setOrdersID(int $oID) {
@@ -40,12 +45,17 @@ class OrdersItems {
         $this->ItemQty = $itemQty;
     }
 
+    function setItemName(string $newItemName) {
+        $this->itemName = $newItemName;
+    }
+
     function json_serialize() {
         // Make a new std class
         $obj = new StdClass();
         $obj->OrdersID = $this->getOrdersID();
         $obj->ItemID = $this->getItemID();
         $obj->ItemQty = $this->getItemQty();
+        $obj->itemName = $this->getItemName();
         // Return it
         return $obj;
     }

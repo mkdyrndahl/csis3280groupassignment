@@ -83,7 +83,7 @@ class Page  {
             <td><A HREF="'.$_SERVER["PHP_SELF"].'?action=edit&id='.$item->getItemID().'
             ">Edit</A></td>
             <td><A HREF="'.$_SERVER["PHP_SELF"].'?action=add&id='.$item->getItemID().'
-            ">Add</A></td>
+            ">Add to Order</A></td>
             </tr>';
         }
         
@@ -91,6 +91,7 @@ class Page  {
         </table>';
 
         echo 'Click '.'<A HREF="'.$_SERVER["PHP_SELF"].'?action=addItem">here to Add an Item</A><BR>';
+        echo '<A HREF = MDyYWoHJoWelcome.php>Home</A><BR>';
         echo '<A HREF = MDyYWoHJoOrders.php>Orders</A><BR>';
         echo '<A HREF = MDyYWoHJoPayment.php>Payment</A><BR>';
 
@@ -158,6 +159,7 @@ class Page  {
         echo '<A HREF="'.$_SERVER["PHP_SELF"].'?action=add">Add</A>';
         echo '</tbody>
         </table>';
+        echo '<A HREF = MDyYWoHJoWelcome.php>Home</A><BR>';
         echo '<A HREF = MDyYWoHJoOrders.php>Orders</A><BR>';
         echo '<A HREF = MDyYWoHJoPayment.php>Payment</A><BR>';
         echo '<p>Click <A HREF="MDyYWoHJoLogout.php">here to logout</A>.</p>';
@@ -170,6 +172,7 @@ class Page  {
           <tr>
             <th>Order ID</th>
             <th>Item ID</th>
+            <th>Item Name</th>
             <th>Quantity</th>
           </tr>
         </thead>
@@ -179,8 +182,9 @@ class Page  {
             echo '  <tr>
             <td>'.$order->getOrdersID().'</td>
             <td>'.$order->getItemID().'</td>
+            <td>'.$order->getItemName().'</td>
             <td>'.$order->getItemQty().'</td>
-            <td><A HREF="'.$_SERVER["PHP_SELF"].'?action=delete&itemid='.$order->getItemID().'&orderid='.$order->getOrdersID().'
+            <td><A HREF="'.$_SERVER["PHP_SELF"].'?action=deleteItem&itemid='.$order->getItemID().'&orderid='.$order->getOrdersID().'
             ">Delete</A></td>
             <td><A HREF="'.$_SERVER["PHP_SELF"].'?action=edit&itemid='.$order->getItemID().'&orderid='.$order->getOrdersID().'
             ">Edit</A></td>
@@ -189,7 +193,7 @@ class Page  {
         
         echo '</tbody>
         </table>';
-  
+        
     }
 
     static function listOrder($orderData)    {
@@ -220,6 +224,7 @@ class Page  {
 
         echo '</tbody>
         </table>';
+        echo '<A HREF = MDyYWoHJoWelcome.php>Home</A><BR>';
         echo '<A HREF = MDyYWoHJoOrders.php>Orders</A><BR>';
         echo '<A HREF = MDyYWoHJoPayment.php>Payment</A><BR>';
         echo '<p>Click <A HREF="MDyYWoHJoLogout.php">here to logout</A>.</p>';

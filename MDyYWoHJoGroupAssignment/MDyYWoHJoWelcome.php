@@ -157,9 +157,11 @@ if (!empty($_GET)) {
 
         $oi = new OrdersItems();
         $oi->setOrdersID($orderID);
+        $oi->setItemName($ei->getItemName());
         $oi->setItemID($_GET['id']);
         $oi->setItemQty(1);
         OrdersItemsMapper::createOrderItems($oi);
+        echo "Item has been added to the order.";
     }
 }
 Page::welcome();

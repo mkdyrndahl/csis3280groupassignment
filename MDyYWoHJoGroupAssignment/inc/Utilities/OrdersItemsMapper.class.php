@@ -14,12 +14,13 @@ class OrdersItemsMapper {
     // private $PaymentNumber;
     static function createOrderItems(OrdersItems $no) : int {
         // function used to create an object of the parameter class and talk to the db 
-        $insertQuery = "INSERT INTO OrdersItems(OrdersID, ItemID, ItemQty) VALUES (:ordersID, :itemID, :itemQty);";
+        $insertQuery = "INSERT INTO OrdersItems(OrdersID, ItemID, itemName, ItemQty) VALUES (:ordersID, :itemID, :itemName, :itemQty);";
 
         self::$db->query($insertQuery);
         self::$db->bind(':ordersID',$no->getOrdersID());
         self::$db->bind(':itemID', $no->getItemID());
         self::$db->bind(':itemQty', $no->getItemQty());
+        self::$db->bind(':itemName',$no->getItemName());
 
         self::$db->execute();
 
@@ -83,18 +84,18 @@ class OrdersItemsMapper {
         return true;
     }
 
-    static function deleteOrder(int $ordersID) : bool {
+    static function deleteOrder(int $itemID) : bool {
         // function used to delete a single object from the db which meets the query
-        $deleteQuery = "DELETE FROM OrdersItems WHERE OrdersID = :ordersID;";
+        $deleteQuery = "DELETE FROM OrdersItems WHERE ItemID = :itemID;";
 
         try{
             self::$db->query($deleteQuery);
-            self::$db->bind(':ordersID', $ordersID);
+            self::$db->bind(':itemID', $itemID);
 
             self::$db->execute();
 
             if(self::$db->rowCount()!= 1) {
-                throw new Exception("Cannot delete Order $ordersID");
+                throw new Exception("Cannot delete Order $itemID");
             }
         }
         catch (Exception $de) {

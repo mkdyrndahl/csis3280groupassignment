@@ -52,11 +52,10 @@ if (!empty($_POST)) {
     }
 }
 
-$orders = OrderMapper::getCustomerOrders($_SESSION["loggedin"]->getCustomerID());
-
 if (!empty($_GET)) {
     if ($_GET['action'] == "delete") {
         OrderMapper::deleteOrder($_GET['id']);
+        echo "Your order has been deleted.";
     }
     if($_GET['action'] == "showItems")  {
         $orderItems = OrdersItemsMapper::selectOrdersId($_GET["id"]);
@@ -68,8 +67,12 @@ if (!empty($_GET)) {
         $orderItems = OrdersItemsMapper::selectItemID($_GET["orderid"],$_GET["itemid"]);
         Page::showEditOrderItemsForm($orderItems);
     }
+    if ($_GET['action'] == 'deleteItem')    {
+        OrderMapper::deleteOrder($_GET["orderid"]);
+        echo "Your item has been deleted.";
+    }
 }
-
+$orders = OrderMapper::getCustomerOrders($_SESSION["loggedin"]->getCustomerID());
 Page::listOrder($orders);
 Page::footer();
 ?>

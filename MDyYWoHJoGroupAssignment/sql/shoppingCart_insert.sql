@@ -17,14 +17,14 @@ INSERT INTO Item (itemName, itemDesc, itemPrice, itemAvail) VALUES
     ('Cream','Dairy',4.99,1);
 
 INSERT INTO Orders (CustomerID,Amt,Dates) VALUES 
-    (1,199.99,20100101),
-    (2,299.99,20200202),
-    (3,399.99,20300303);
+    (1,19.90,20100101),
+    (2,19.80,20200202),
+    (3,41.70,20300303);
 
-Insert INTO OrdersItems (OrdersID, ItemID, ItemQty) VALUES
-    (1,1,10),
-    (2,2,20),
-    (3,3,30);
+Insert INTO OrdersItems (OrdersID, ItemID, ItemName, ItemQty) VALUES
+    (1,1,'Apples',10),
+    (2,2,'Bananas',20),
+    (3,3,'Oranges',30);
 
 INSERT INTO Payments (CustomerID, PaymentName, PaymentNumber) VALUES 
     (1,'Visa','123-456-789'),
