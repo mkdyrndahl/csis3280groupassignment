@@ -81,7 +81,7 @@ class Page  {
             <td><A HREF="'.$_SERVER["PHP_SELF"].'?action=edit&id='.$item->getItemID().'
             ">Edit</A></td>
             <td><A HREF="'.$_SERVER["PHP_SELF"].'?action=add&id='.$item->getItemID().'
-            ">Add</A></td>
+            ">Add to Order</A></td>
             </tr>';
         }
         
@@ -89,6 +89,7 @@ class Page  {
         </table>';
 
         echo 'Click '.'<A HREF="'.$_SERVER["PHP_SELF"].'?action=addItem">here to Add an Item</A><BR>';
+        echo '<A HREF = MDyYWoHJoWelcome.php>Home</A><BR>';
         echo '<A HREF = MDyYWoHJoOrders.php>Orders</A><BR>';
         echo '<A HREF = MDyYWoHJoPayment.php>Payment</A><BR>';
 
@@ -156,6 +157,7 @@ class Page  {
         echo '<A HREF="'.$_SERVER["PHP_SELF"].'?action=add">Add</A>';
         echo '</tbody>
         </table>';
+        echo '<A HREF = MDyYWoHJoWelcome.php>Home</A><BR>';
         echo '<A HREF = MDyYWoHJoOrders.php>Orders</A><BR>';
         echo '<A HREF = MDyYWoHJoPayment.php>Payment</A><BR>';
         echo '<p>Click <A HREF="MDyYWoHJoLogout.php">here to logout</A>.</p>';
@@ -218,6 +220,7 @@ class Page  {
 
         echo '</tbody>
         </table>';
+        echo '<A HREF = MDyYWoHJoWelcome.php>Home</A><BR>';
         echo '<A HREF = MDyYWoHJoOrders.php>Orders</A><BR>';
         echo '<A HREF = MDyYWoHJoPayment.php>Payment</A><BR>';
         echo '<p>Click <A HREF="MDyYWoHJoLogout.php">here to logout</A>.</p>';
@@ -326,7 +329,7 @@ static function showEditItemForm($itemData)   { ?>
 
         <label for="title">Availability</label>
         <input class="u-full-width" type="text" VALUE="<?php echo $itemData->getItemAvail();?>" id="avail" name="avail">
-
+        <input class="u-full-width" type="hidden" VALUE="<?php echo $itemData->getItemID();?>" id="itemID" name="itemID">
         <input class="button-primary" type="submit" value="Submit">
         </div>
       

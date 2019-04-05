@@ -104,13 +104,12 @@ class OrderMapper {
         self::$db->execute();
 
         if(self::$db->rowCount() != 1) {
-            throw new Exception("Problem updating order $OrderID");
+            throw new Exception("Order has not been updated");
         }
-
+        echo "Order has been updated.";
         }
         catch(Exception $ex) {
             echo $ex->getMessage();
-            self::$db->debugDumpParams();
             return false;
         }
         

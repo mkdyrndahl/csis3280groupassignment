@@ -59,7 +59,7 @@ switch($_SERVER['REQUEST_METHOD']) {
     case "PUT":
         $ei = new Item();
         $ei->setItemName($requestData['name']);
-        $ei->setAddress($requestData['desc']);
+        $ei->setItemDesc($requestData['desc']);
         $ei->setItemPrice($requestData['price']);
         $ei->setItemAvail($requestData['avail']);
 

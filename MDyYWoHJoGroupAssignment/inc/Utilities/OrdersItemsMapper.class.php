@@ -72,12 +72,12 @@ class OrdersItemsMapper {
 
             self::$db->execute();
             if (self::$db->rowCount() != 1) {
-                throw new Exception ("Cannot update Order.");
+                throw new Exception ("Order Items has not been updated.");
             }
+            echo "Order Items has been updated.";
         }
         catch (Exception $ue) {
             echo $ue->getMessage();
-            echo self::$db->debugDumpParams();
             return false;
         }
         return true;

@@ -91,6 +91,7 @@ if (!empty($_POST)) {
                                     'desc' => $_POST['desc'],
                                     'price' => $_POST['price'],
                                     'avail' => $_POST['avail'],
+                                    'itemID' => $_POST['itemID']
                                     
             )
         );
