@@ -50,7 +50,9 @@ class Page  {
             </div>
             </div>
         </div>
-
+        <div class="column" style="margin-top:25%">
+            
+        </div>
         <!-- End Document
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
         </body>
@@ -81,7 +83,7 @@ class Page  {
             <td><A HREF="'.$_SERVER["PHP_SELF"].'?action=edit&id='.$item->getItemID().'
             ">Edit</A></td>
             <td><A HREF="'.$_SERVER["PHP_SELF"].'?action=add&id='.$item->getItemID().'
-            ">Add to Order</A></td>
+            ">Add</A></td>
             </tr>';
         }
         
@@ -89,7 +91,6 @@ class Page  {
         </table>';
 
         echo 'Click '.'<A HREF="'.$_SERVER["PHP_SELF"].'?action=addItem">here to Add an Item</A><BR>';
-        echo '<A HREF = MDyYWoHJoWelcome.php>Home</A><BR>';
         echo '<A HREF = MDyYWoHJoOrders.php>Orders</A><BR>';
         echo '<A HREF = MDyYWoHJoPayment.php>Payment</A><BR>';
 
@@ -157,7 +158,6 @@ class Page  {
         echo '<A HREF="'.$_SERVER["PHP_SELF"].'?action=add">Add</A>';
         echo '</tbody>
         </table>';
-        echo '<A HREF = MDyYWoHJoWelcome.php>Home</A><BR>';
         echo '<A HREF = MDyYWoHJoOrders.php>Orders</A><BR>';
         echo '<A HREF = MDyYWoHJoPayment.php>Payment</A><BR>';
         echo '<p>Click <A HREF="MDyYWoHJoLogout.php">here to logout</A>.</p>';
@@ -220,7 +220,6 @@ class Page  {
 
         echo '</tbody>
         </table>';
-        echo '<A HREF = MDyYWoHJoWelcome.php>Home</A><BR>';
         echo '<A HREF = MDyYWoHJoOrders.php>Orders</A><BR>';
         echo '<A HREF = MDyYWoHJoPayment.php>Payment</A><BR>';
         echo '<p>Click <A HREF="MDyYWoHJoLogout.php">here to logout</A>.</p>';
@@ -237,8 +236,7 @@ class Page  {
 
             <div class="eight columns">
 
-            <label for="itemID">Item ID</label>
-            <input class="u-full-width" type="text" VALUE="<?php echo $orderData->getItemID();?>" id="itemID" name="itemID">
+            <input class="u-full-width" type="hidden" VALUE="<?php echo $orderData->getItemID();?>" id="itemID" name="itemID">
             
             <label for="itemQty">Item Qty</label>
             <input class="u-full-width" type="text" VALUE="<?php echo $orderData->getItemQty();?>" id="itemQty" name="itemQty">
@@ -329,7 +327,7 @@ static function showEditItemForm($itemData)   { ?>
 
         <label for="title">Availability</label>
         <input class="u-full-width" type="text" VALUE="<?php echo $itemData->getItemAvail();?>" id="avail" name="avail">
-        <input class="u-full-width" type="hidden" VALUE="<?php echo $itemData->getItemID();?>" id="itemID" name="itemID">
+
         <input class="button-primary" type="submit" value="Submit">
         </div>
       
@@ -347,16 +345,21 @@ static function showAddUserForm()   { ?>
     <form method="POST" ACTION="<?php echo $_SERVER["PHP_SELF"]; ?>">
     <input type="hidden" name="action" value="add">
     <div class="row">
-    <!-- private $CustomerID;
-    private $FirstName;
-    private $LastName;
-    private $Address;
-    private $City;
-    private $Province;
-    private $Country;
-    private $Username;
-    private $Password; -->
+<!-- +------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| CustomerID | int(11)      | NO   | PRI | NULL    | auto_increment |
+| FirstName  | varchar(20)  | NO   |     | NULL    |                |
+| LastName   | varchar(20)  | NO   |     | NULL    |                |
+| Address    | varchar(50)  | NO   |     | NULL    |                |
+| City       | varchar(20)  | NO   |     | NULL    |                |
+| Province   | varchar(20)  | NO   |     | NULL    |                |
+| Country    | varchar(20)  | NO   |     | NULL    |                |
+| Username   | varchar(20)  | NO   |     | NULL    |                |
+| Password   | varchar(250) | NO   |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+ -->
         <div class="eight columns">
+        
         <label for="FirstName">First Name</label>
         <input class="u-full-width" type="text" placeholder="First Name" id="FirstName" name="FirstName">
         
@@ -493,7 +496,7 @@ static function showEditUserForm($userData)   { ?>
         <label for="password">Password</label>
         <input class="u-full-width" type="text" VALUE="" id="Password" name="Password">
 
-        <input class="u-full-width" type="hidden" VALUE="<?php echo $userData->getCustomerID();?>" id="customerID" name="customerID">
+        <input class="u-full-width" type="hidden" VALUE="<?php echo $userData->getCustomerID();?>" id="CustomerID" name="CustomerID">
         <input class="button-primary" type="submit" value="Submit">
         </div>
       

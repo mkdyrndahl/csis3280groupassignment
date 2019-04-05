@@ -44,6 +44,7 @@ if (!empty($_POST) )  {
         $user->setLastName($jUser->LastName);
         $user->setAddress($jUser->Address);
         $user->setCity($jUser->City);
+        $user->setProvince($jUser->Province);
         $user->setCountry($jUser->Country);
         $user->setUsername($jUser->Username);
         $user->setUnhashedPass($jUser->Password);

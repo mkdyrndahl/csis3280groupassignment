@@ -57,9 +57,6 @@ if (!empty($_POST)) {
     }
 }
 
-PaymentMapper::Initialize("Payment");
-$payments = PaymentMapper::getCustomerPayment($_SESSION["loggedin"]->getCustomerID());
-
 if(!empty($_POST))  {
     if($_POST['action'] == 'add'){
         $np = new Payment();
@@ -82,7 +79,7 @@ if (!empty($_GET)) {
         Page::showAddPaymentForm();
     }
 }
-
+$payments = PaymentMapper::getCustomerPayment($_SESSION["loggedin"]->getCustomerID());
 Page::listPayment($payments);
 Page::footer();
 ?>

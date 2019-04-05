@@ -73,19 +73,19 @@ class PaymentMapper {
 
             self::$db->execute();
             if (self::$db->rowCount() != 1) {
-                throw new Exception ("Cannot update Payment $payID");
+                throw new Exception ("Cannot update Payment $payID");    
             }
+            echo "Your payment methods have been updated.";
         }
         catch (Exception $ue) {
             echo $ue->getMessage();
-            echo self::$db->debugDumpParams();
             return false;
         }
         return true;
     }
 
     static function deletePayment(int $payID) : bool {
-        $deleteQuery = "DELETE FROM Payment WHERE PaymentID = :payID;";
+        $deleteQuery = "DELETE FROM Payments WHERE PaymentID = :payID;";
 
         try{
             self::$db->query($deleteQuery);

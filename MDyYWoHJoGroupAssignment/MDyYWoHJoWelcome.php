@@ -24,6 +24,7 @@ OrderMapper::initialize("Order");
 OrdersItemsMapper::initialize("OrdersItems");
 Page::$title = "Welcome " .$_SESSION['loggedin']->getfirstName() . " " . $_SESSION['loggedin']->getLastName();
 Page::header();
+
 if (isset($_POST['edituser'])) {
         Page::showEditUserForm($_SESSION['loggedin']);
 }
@@ -38,17 +39,17 @@ if (!empty($_POST)) {
         }
         else {
             $ec = new Customer();
-            $ec->setFirstName($_POST["firstname"]);
-            $ec->setLastName($_POST["lastname"]);
-            $ec->setAddress($_POST["address"]);
-            $ec->setCity($_POST["city"]);
-            $ec->setProvince($_POST["province"]);
-            $ec->setCountry($_POST["country"]);
-            $ec->setUsername($_POST["username"]);
-            $ec->setPassword($_POST["password"]);
+            $ec->setFirstName($_POST["FirstName"]);
+            $ec->setLastName($_POST["LastName"]);
+            $ec->setAddress($_POST["Address"]);
+            $ec->setCity($_POST["City"]);
+            $ec->setProvince($_POST["Province"]);
+            $ec->setCountry($_POST["Country"]);
+            $ec->setUsername($_POST["Username"]);
+            $ec->setPassword($_POST["Password"]);
 
-            CustomerMapper::updateCustomer($ec, $_POST['customerID']);
-            $user = CustomerMapper::selectCustomer($_POST["username"]);
+            CustomerMapper::updateCustomer($ec, $_POST['CustomerID']);
+            $user = CustomerMapper::selectCustomer($_POST["Username"]);
             $_SESSION['loggedin'] = $user;
         }
     }
